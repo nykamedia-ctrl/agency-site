@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pipeline Co. — Outbound Sales for Founder-Led Companies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off: #fafaf9;
+      --ink: #111110;
+      --mid: #6e6e6b;
+      --light: #e8e8e5;
+      --rule: #ebebea;
+      --green: #2d6a4f;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Figtree', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .logo sup {
+      font-family: var(--font-sans);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      vertical-align: super;
+      margin-left: 3px;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); }
+
+    .nav-btn {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      background: var(--ink);
+      text-decoration: none;
+      padding: 0.55rem 1.25rem;
+      border-radius: 3px;
+      transition: opacity 0.2s;
+    }
+    .nav-btn:hover { opacity: 0.8; }
+
+    /* HERO */
+    .hero-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 9rem 0 5rem;
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+
+    .kicker-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2.2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6.5vw, 5.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 820px;
+      margin-bottom: 2rem;
+    }
+
+    h1 em { font-style: italic; color: var(--mid); }
+
+    .hero-body {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 460px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    .hero-ctas { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    .btn-solid {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 1.9rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-solid:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .btn-text {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--ink); }
+
+    .hero-stats {
+      margin-top: 5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 3rem;
+      width: fit-content;
+    }
+
+    .stat-val {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label { font-size: 0.78rem; color: var(--mid); font-weight: 400; line-height: 1.4; }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 0;
+      overflow: hidden;
+      background: var(--off);
+    }
+
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .marquee-item::after {
+      content: '·';
+      color: var(--light);
+      font-size: 1.2rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 7rem 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 4rem;
+    }
+
+    /* SERVICES */
+    #services-wrap { background: var(--off); }
+
+    .services-list { border-top: 1px solid var(--rule); }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 48px 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .service-n {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: var(--mid);
+      padding-top: 3px;
+    }
+
+    .service-name {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .process-step {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--rule);
+    }
+    .process-step:last-child { border-right: none; }
+
+    .process-step-n {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .process-step h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .process-step p { font-size: 0.82rem; color: var(--mid); line-height: 1.65; font-weight: 300; }
+
+    /* RESULTS */
+    #results-wrap { background: var(--ink); }
+    #results-wrap h2 { color: var(--white); }
+    #results-wrap .section-tag { color: rgba(255,255,255,0.3); }
+    #results-wrap .section-sub { color: rgba(255,255,255,0.4); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .result-card { background: var(--ink); padding: 2.25rem 2rem; }
+
+    .result-flag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-what {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .result-quote {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      border-left: 1px solid rgba(255,255,255,0.12);
+      padding-left: 1rem;
+    }
+
+    .result-who {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.28);
+      margin-top: 0.6rem;
+      font-style: normal;
+    }
+
+    /* ABOUT */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      aspect-ratio: 3/4;
+      background: var(--off);
+      border-radius: 3px;
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 0.85rem;
+    }
+
+    .about-markets {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .market-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--mid);
+      border: 1px solid var(--rule);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* CTA */
+    #cta-wrap { background: var(--off); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+    .cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8rem 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .cta-right { display: flex; flex-direction: column; gap: 1.25rem; }
+    .cta-right p { font-size: 0.95rem; color: var(--mid); font-weight: 300; line-height: 1.8; }
+    .cta-right .btn-solid { align-self: flex-start; }
+    .cta-note { font-size: 0.75rem; color: var(--mid); }
+
+    /* FOOTER */
+    footer {
+      padding: 1.75rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .footer-copy { font-size: 0.75rem; color: var(--mid); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .process-step { border-bottom: 1px solid var(--rule); }
+      .results-grid { grid-template-columns: 1fr; }
+      .about-layout, .cta-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .service-row { grid-template-columns: 32px 1fr; }
+      .service-desc { grid-column: 2; }
+      .nav-link { display: none; }
+      .hero-stats { gap: 2rem; }
+    }
+
+    @media (max-width: 540px) {
+      h1 { font-size: 2.8rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Pipeline<sup>co</sup></a>
+    <div class="nav-right">
+      <a href="#services-wrap" class="nav-link">Services</a>
+      <a href="#results-wrap" class="nav-link">Results</a>
+      <a href="#about-wrap" class="nav-link">About</a>
+      <a href="#cta-wrap" class="nav-btn">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero">
+      <p class="hero-kicker">
+        <span class="kicker-dot"></span>
+        Available for new engagements · US · UK · AU
+      </p>
+      <h1>Outbound sales &amp; pipeline<br><em>built for founders.</em></h1>
+      <p class="hero-body">You build the product. We fill your calendar with qualified, ready-to-buy prospects — and turn outbound into a repeatable growth channel.</p>
+      <div class="hero-ctas">
+        <a href="#cta-wrap" class="btn-solid">Book a Free Strategy Call</a>
+        <a href="#results-wrap" class="btn-text">See results ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-val">3.2×</div>
+          <div class="stat-label">Avg pipeline growth<br>in 90 days</div>
+        </div>
+        <div>
+          <div class="stat-val">30</div>
+          <div class="stat-label">Days to first<br>qualified calls</div>
+        </div>
+        <div>
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Founder-focused<br>engagements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Outbound Strategy</span>
+      <span class="marquee-item">Cold Email &amp; LinkedIn</span>
+      <span class="marquee-item">ICP Definition</span>
+      <span class="marquee-item">Sequence Building</span>
+      <span class="marquee-item">Pipeline Reviews</span>
+      <span class="marquee-item">GTM Playbooks</span>
+      <span class="marquee-item">Lead Qualification</span>
+      <span class="marquee-item">Discovery Calls</span>
+      <span class="marquee-item">CRM Setup &amp; Ops</span>
+      <span class="marquee-item">Weekly Reporting</span>
+      <span class="marquee-item">Outbound Strategy</span>
+      <span class="marquee-item">Cold Email &amp; LinkedIn</span>
+      <span class="marquee-item">ICP Definition</span>
+      <span class="marquee-item">Sequence Building</span>
+      <span class="marquee-item">Pipeline Reviews</span>
+      <span class="marquee-item">GTM Playbooks</span>
+      <span class="marquee-item">Lead Qualification</span>
+      <span class="marquee-item">Discovery Calls</span>
+      <span class="marquee-item">CRM Setup &amp; Ops</span>
+      <span class="marquee-item">Weekly Reporting</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services-wrap">
+    <div class="section">
+      <p class="section-tag reveal">Services</p>
+      <h2 class="reveal">What we do for you.</h2>
+      <p class="section-sub reveal">Everything needed to turn outbound into a consistent, scalable revenue channel.</p>
+      <div class="services-list">
+        <div class="service-row reveal">
+          <span class="service-n">01</span>
+          <span class="service-name">Prospecting &amp; List Building</span>
+          <p class="service-desc">Highly-targeted prospect lists built on your ICP — so every email lands in the right inbox at the right company.</p>
+        </div>
+        <div class="service-row reveal">
+          <span class="service-n">02</span>
+          <span class="service-name">Cold Email &amp; LinkedIn Outreach</span>
+          <p class="service-desc">Multi-channel sequences written to sound human. A/B tested weekly until open rates and reply rates move.</p>
+        </div>
+        <div class="service-row reveal">
+          <span class="service-n">03</span>
+          <span class="service-name">Pipeline Management</span>
+          <p class="service-desc">We run top-of-funnel end-to-end — from first touch to booked discovery call — so nothing leaks and nothing slips.</p>
+        </div>
+        <div class="service-row reveal">
+          <span class="service-n">04</span>
+          <span class="service-name">Playbook &amp; Handoff</span>
+          <p class="service-desc">When you're ready to hire in-house, we hand over a documented, proven outbound playbook your team can run independently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div id="process-wrap">
+    <div class="section">
+      <p class="section-tag reveal">Process</p>
+      <h2 class="reveal">Live in under 30 days.</h2>
+      <p class="section-sub reveal">No 3-month discovery phases. No agency bloat. A fast, structured path to qualified pipeline.</p>
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <div class="process-step-n">01</div>
+          <h3>Strategy Call</h3>
+          <p>We map your ICP, deal size, market, and current sales motion. You leave with a clear diagnosis and action plan.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-n">02</div>
+          <h3>Build Week</h3>
+          <p>Sequences written, lists built, tooling configured. Everything is ready to launch by day 7.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-n">03</div>
+          <h3>Launch &amp; Test</h3>
+          <p>Outreach goes live. We monitor replies and meetings booked, optimising daily in the first week.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-n">04</div>
+          <h3>Iterate &amp; Report</h3>
+          <p>Weekly data reviews and monthly strategy sessions. You stay informed without being in the weeds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results-wrap">
+    <div class="section">
+      <p class="section-tag reveal">Results</p>
+      <h2 class="reveal">Numbers first.</h2>
+      <p class="section-sub reveal">Real outcomes from founder-led companies across the US, UK, and Australia.</p>
+      <div class="results-grid">
+        <div class="result-card reveal">
+          <p class="result-flag">🇺🇸 B2B SaaS · United States</p>
+          <div class="result-num">$1.8M</div>
+          <p class="result-what">New ARR generated in 6 months for a 12-person SaaS company with no prior outbound motion.</p>
+          <p class="result-quote">"They built our entire sales engine from scratch. We went from 0 to 40 qualified calls a month."</p>
+          <p class="result-who">— CEO, B2B SaaS Platform</p>
+        </div>
+        <div class="result-card reveal d1">
+          <p class="result-flag">🇬🇧 Fintech · United Kingdom</p>
+          <div class="result-num">4× MoM</div>
+          <p class="result-what">Pipeline growth within 60 days for a London-based fintech startup with no existing sales team.</p>
+          <p class="result-quote">"The playbook they built became the foundation for our first in-house sales hire."</p>
+          <p class="result-who">— Founder, Fintech Startup</p>
+        </div>
+        <div class="result-card reveal d2">
+          <p class="result-flag">🇦🇺 Professional Services · Australia</p>
+          <div class="result-num">68%</div>
+          <p class="result-what">Improvement in close rate after rebuilding the outbound motion and ICP positioning from scratch.</p>
+          <p class="result-quote">"We were great at delivery but terrible at selling. That's completely flipped now."</p>
+          <p class="result-who">— Founder, Services Agency</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about-wrap">
+    <div class="section">
+      <div class="about-layout">
+        <div class="about-photo reveal">
+          <span class="photo-placeholder">Your photo here</span>
+        </div>
+        <div class="about-text">
+          <p class="section-tag reveal">About</p>
+          <h2 class="reveal">You work directly with the person<br>who's done this before.</h2>
+          <p class="reveal">[Your name] is a sales and growth specialist with [X] years of experience building outbound engines for founder-led companies across B2B SaaS, professional services, and tech.</p>
+          <p class="reveal">Unlike big agencies, you get direct access — no junior account managers, no handoffs. Engagements are built around speed, clarity, and measurable outcomes from day one.</p>
+          <div class="about-markets reveal">
+            <span class="market-tag">🇺🇸 United States</span>
+            <span class="market-tag">🇬🇧 United Kingdom</span>
+            <span class="market-tag">🇦🇺 Australia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta-wrap">
+    <div class="cta-inner">
+      <h2 class="reveal">Let's build your<br>pipeline.</h2>
+      <div class="cta-right reveal">
+        <p>Book a free 30-minute strategy call. We'll map your ICP, diagnose what's blocking pipeline growth, and tell you honestly what's achievable in 90 days.</p>
+        <a href="https://calendly.com/yourlink" target="_blank" class="btn-solid">Book Your Free Call →</a>
+        <span class="cta-note">No commitment. No sales pitch. Just a straight conversation.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="logo" style="font-size:1rem;">Pipeline<sup>co</sup></a>
+    <p class="footer-copy">© 2026 PipelineCo. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#services-wrap">Services</a>
+      <a href="#results-wrap">Results</a>
+      <a href="#about-wrap">About</a>
+      <a href="#cta-wrap">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
